@@ -86,5 +86,10 @@ This is the place for you to write reflections:
 3.  Singleton hanya memastikan bahwa data subscriber hanya memiliki satu instance dalam aplikasi. Namun, itu tidak menjamin keamanan saat diakses oleh banyak thread. Karena aplikasi bisa menangani banyak request secara bersamaan, kita tetap membutuhkan struktur data yang thread-safe. DashMap sudah menyediakan hal tersebut, sehingga tetap diperlukan meskipun konsep Singleton digunakan.
 
 #### Reflection Publisher-2
+1. Service dan Repository dipisah supaya tanggung jawabnya tidak bercampur. Repository fokus ke akses dan penyimpanan data, sedangkan Service menangani alur logic seperti subscribe dan unsubscribe. Dengan pemisahan ini, kode jadi lebih terstruktur, lebih mudah dibaca, dan lebih aman saat ada perubahan karena tidak semua bagian saling terikat langsung.
+
+2. Kalau semua dimasukkan ke Model, maka satu class harus menangani terlalu banyak hal sekaligus: data, penyimpanan, dan logic. Ini membuat Program, Subscriber, dan Notification saling bergantung langsung dan meningkatkan kompleksitas. Akibatnya, kode jadi lebih sulit dipahami, sulit di-maintain, dan rawan error ketika ada perubahan kecil.
+
+3. Postman membantu testing API tanpa perlu membuat frontend. Kita bisa langsung kirim request seperti subscribe dan unsubscribe, lalu cek response dari server. Fitur seperti collection memudahkan penyimpanan endpoint, environment variable membantu mengganti URL dengan cepat, dan history membantu melacak request sebelumnya. Ini membuat proses testing jadi lebih cepat dan efisien selama development.
 
 #### Reflection Publisher-3
