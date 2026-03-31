@@ -93,3 +93,8 @@ This is the place for you to write reflections:
 3. Postman membantu testing API tanpa perlu membuat frontend. Kita bisa langsung kirim request seperti subscribe dan unsubscribe, lalu cek response dari server. Fitur seperti collection memudahkan penyimpanan endpoint, environment variable membantu mengganti URL dengan cepat, dan history membantu melacak request sebelumnya. Ini membuat proses testing jadi lebih cepat dan efisien selama development.
 
 #### Reflection Publisher-3
+1. Yang digunakan di tutorial ini adalah push model. Publisher langsung mengirim notifikasi ke semua subscriber saat ada event seperti create, delete, atau promotion. Ini terlihat dari proses notify yang langsung mengirim HTTP request ke setiap subscriber tanpa menunggu mereka meminta data terlebih dahulu.
+
+2. Jika memakai pull model, subscriber tidak langsung menerima data. Mereka harus mengecek sendiri ke publisher untuk mengambil informasi terbaru. Kelebihannya, subscriber bisa mengatur kapan dan data apa yang ingin diambil. Tapi kekurangannya, proses jadi tidak real-time dan membutuhkan request tambahan dari setiap subscriber, sehingga lebih lambat dan kurang efisien untuk kasus notifikasi.
+
+3. Tanpa multi-threading, pengiriman notifikasi bakal satu per satu. Jika ada satu subscriber yang lambat, maka yang lain juga ikut tertunda. Ini bisa membuat sistem terasa lambat, apalagi jika jumlah subscriber banyak. Dengan multi-threading, notifikasi bisa dikirim bersamaan ke banyak subscriber sehingga lebih cepat dan mengurangi bottleneck.
