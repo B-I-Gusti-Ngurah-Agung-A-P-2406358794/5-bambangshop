@@ -77,6 +77,13 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+### Reflection Publisher-1
+
+1.  Dalam kasus BambangShop, kalau hanya ada satu jenis subscriber, sebenarnya satu Model struct saja sudah cukup untuk digunakan. Namun, tujuan dari pola Observer adalah agar sistem bisa mendukung berbagai jenis observer dengan perilaku berbeda. Dengan menggunakan trait, desain jadi lebih fleksibel dan mudah dikembangkan ke depannya. Jadi meskipun saat ini terlihat sederhana, penggunaan trait tetap lebih baik. Hal ini juga sesuai dengan prinsip *program to interface, not implementation*.
+
+2.  Vec memang bisa dipakai untuk menyimpan data subscriber, tetapi kurang efisien jika kita sering melakukan pencarian atau penghapusan berdasarkan nilai unik seperti id atau url. Dengan DashMap, kita bisa mengakses data langsung berdasarkan key tanpa perlu iterasi satu per satu. Selain itu, performanya juga lebih baik saat jumlah data bertambah.
+
+3.  Singleton hanya memastikan bahwa data subscriber hanya memiliki satu instance dalam aplikasi. Namun, itu tidak menjamin keamanan saat diakses oleh banyak thread. Karena aplikasi bisa menangani banyak request secara bersamaan, kita tetap membutuhkan struktur data yang thread-safe. DashMap sudah menyediakan hal tersebut, sehingga tetap diperlukan meskipun konsep Singleton digunakan.
 
 #### Reflection Publisher-2
 
